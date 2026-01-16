@@ -1,0 +1,16 @@
+{
+  "name": "circled-ball-platform-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser game served by Node.js (Express) + Canvas client",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
+

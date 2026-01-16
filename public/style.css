@@ -1,0 +1,96 @@
+:root {
+  --bg: #0b0f1a;
+  --panel: rgba(255, 255, 255, 0.06);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.62);
+  --accent: #7c5cff;
+  --accent2: #37d67a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: radial-gradient(1000px 600px at 50% 0%, rgba(124, 92, 255, 0.25), transparent 55%),
+    radial-gradient(900px 600px at 20% 100%, rgba(55, 214, 122, 0.18), transparent 55%),
+    var(--bg);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.wrap {
+  width: min(860px, 100%);
+}
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 14px;
+}
+
+.title {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.stats {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.stats b {
+  color: var(--text);
+}
+
+.sep {
+  opacity: 0.5;
+}
+
+.stage {
+  display: grid;
+  gap: 12px;
+}
+
+canvas {
+  width: min(480px, 100%);
+  height: auto;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+}
+
+.help {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.help .muted {
+  color: var(--muted);
+  margin-top: 6px;
+}
+

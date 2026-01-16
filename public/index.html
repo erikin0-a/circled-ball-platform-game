@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Circled — Ball & Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hud">
+        <div class="title">Ball & Platform</div>
+        <div class="stats">
+          <span>Очки: <b id="score">0</b></span>
+          <span class="sep">•</span>
+          <span>Рекорд: <b id="best">0</b></span>
+        </div>
+      </header>
+
+      <main class="stage">
+        <canvas id="game" width="480" height="720" aria-label="Game canvas"></canvas>
+        <div class="help">
+          <div><b>Управление:</b> ← → / A D (держать), пробел — пауза, R — рестарт</div>
+          <div class="muted">Задача: не дай шарику упасть вниз — отбивай платформой.</div>
+        </div>
+      </main>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
+
