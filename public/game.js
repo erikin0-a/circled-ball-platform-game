@@ -20,7 +20,7 @@ function reset() {
   scoreEl.textContent = "0";
   p.x = W / 2;
   b.x = W / 2; b.y = 160;
-  b.vx = Math.random() < 0.5 ? -1.2 : 1.2;
+  b.vx = Math.random() < 0.5 ? -0 : 0;
   b.vy = -3.5;
 }
 
