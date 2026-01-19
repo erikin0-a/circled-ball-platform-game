@@ -10,7 +10,7 @@ bestEl.textContent = String(best);
 scoreEl.textContent = "0";
 
 const p = { w: 140, h: 16, x: W / 2, y: H - 90, v: 8 };
-const b = { r: 10, x: W / 2, y: 160, vx: 3, vy: -6, g: 0.35 };
+const b = { r: 10, x: W / 2, y: 160, vx: 1.2, vy: -3.5, g: 0.08, maxVy: 5.5 };
 let L = false, R = false;
 
 function clamp(v, a, z) { return v < a ? a : v > z ? z : v; }
@@ -20,8 +20,8 @@ function reset() {
   scoreEl.textContent = "0";
   p.x = W / 2;
   b.x = W / 2; b.y = 160;
-  b.vx = Math.random() < 0.5 ? -3 : 3;
-  b.vy = -6;
+  b.vx = Math.random() < 0.5 ? -1.2 : 1.2;
+  b.vy = -3.5;
 }
 
 addEventListener("keydown", (e) => {
@@ -42,16 +42,22 @@ function update() {
   if (R) p.x += p.v;
   p.x = clamp(p.x, p.w / 2, W - p.w / 2);
 
-  b.vy += b.g; b.x += b.vx; b.y += b.vy;
+  const prevBottom = b.y + b.r;
+  b.vy += b.g;
+  b.vy = clamp(b.vy, -b.maxVy, b.maxVy);
+  b.x += b.vx; b.y += b.vy;
+  const nextBottom = b.y + b.r;
 
   if (b.x - b.r <= 0 || b.x + b.r >= W) b.vx *= -1;
   b.x = clamp(b.x, b.r, W - b.r);
   if (b.y - b.r <= 0) { b.y = b.r; b.vy *= -1; }
 
   const left = p.x - p.w / 2, right = p.x + p.w / 2, top = p.y - p.h / 2;
-  if (b.vy > 0 && b.x >= left && b.x <= right && b.y + b.r >= top && b.y + b.r <= top + 10) {
+  const withinX = (b.x + b.r) >= left && (b.x - b.r) <= right;
+  const crossedTop = prevBottom <= top && nextBottom >= top;
+  if (b.vy > 0 && withinX && crossedTop) {
     b.y = top - b.r;
-    b.vy = -Math.abs(b.vy) - 2;
+    b.vy = -3.8;
     b.vx = clamp(b.vx + (b.x - p.x) * 0.03, -7, 7);
     scoreEl.textContent = String(++score);
     if (score > best) { best = score; bestEl.textContent = String(best); localStorage.setItem("circled_best", String(best)); }
